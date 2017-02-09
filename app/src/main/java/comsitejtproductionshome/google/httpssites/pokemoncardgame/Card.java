@@ -5,7 +5,7 @@ package comsitejtproductionshome.google.httpssites.pokemoncardgame;
  */
 
 public class Card {
-
+//this is just a test update
     private int damage;
 
     private String name;
