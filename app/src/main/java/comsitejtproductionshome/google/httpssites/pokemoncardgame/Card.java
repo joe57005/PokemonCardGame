@@ -2,10 +2,11 @@ package comsitejtproductionshome.google.httpssites.pokemoncardgame;
 
 /**
  * Created by Justin on 2/3/2017.
+ *
+ * O Hai
  */
 
 public class Card {
-//this is just a test update
     private int damage;
 
     private String name;
