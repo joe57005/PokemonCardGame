@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //testing testing
         Button coinFlip= (Button) findViewById(R.id.coin);
         coinFlip.setOnClickListener(new View.OnClickListener() {
             @Override
