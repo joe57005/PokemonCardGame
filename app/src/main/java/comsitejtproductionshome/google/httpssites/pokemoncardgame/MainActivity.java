@@ -4,33 +4,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    ButtonControl bc=new ButtonControl();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //testing testing
-        Button coinFlip= (Button) findViewById(R.id.coin);
-        coinFlip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int choice= (int) (Math.random()*2);
-                if(choice==0){
-                    //Heads!
-                }
-                else{
-                    //Tails!
-                }
-            }
-        });
-
-
-
-
-
-
     }
+        public void coinFlipButton(View v){
+            ((TextView)findViewById(R.id.txtButtonTest)).setText("coin flip button pushed");
+            bc.coinFlip();
+        }
+
+
+
+
+
+
+
+
 }

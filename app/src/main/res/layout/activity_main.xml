@@ -14,8 +14,20 @@
         android:text="coin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="19dp"
-        android:id="@+id/coin"
+        android:layout_marginEnd="13dp"
+        android:id="@+id/buttonCoinFlip"
+        android:onClick="coinFlipButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="35dp"
+        android:id="@+id/txtButtonTest"
+        android:layout_below="@+id/buttonCoinFlip"
+        android:layout_alignParentStart="true"
+        android:textSize="30sp" />
 </RelativeLayout>
