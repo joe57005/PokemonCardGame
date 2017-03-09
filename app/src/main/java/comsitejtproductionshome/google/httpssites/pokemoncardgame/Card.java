@@ -1,12 +1,14 @@
 package comsitejtproductionshome.google.httpssites.pokemoncardgame;
 
+import java.io.Serializable;
+
 /**
  * Created by Justin on 2/3/2017.
  *
  * O Hai
  */
 
-public class Card {
+public class Card implements Serializable{
     private int damage;
 
     private String name;

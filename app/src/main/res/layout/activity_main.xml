@@ -81,23 +81,23 @@
         android:layout_height="65dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/button9" />
+        android:id="@+id/cardMain" />
 
     <Button
         android:text="End"
-        android:layout_width="45dp"
+        android:layout_width="55dp"
         android:layout_height="45dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/button10" />
+        android:id="@+id/endButton" />
 
     <ImageButton
         android:layout_width="35dp"
         android:layout_height="35dp"
         app:srcCompat="@drawable/coin"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="13dp"
         android:id="@+id/buttonCoinFlip"
-        android:onClick="coinFlipButton (MainActivity)" />
+        android:onClick="coinFlipButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

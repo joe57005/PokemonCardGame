@@ -1,0 +1,118 @@
+package comsitejtproductionshome.google.httpssites.pokemoncardgame;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.TextView;
+
+public class CardConfig extends AppCompatActivity {
+
+    public static final String ASDF= "O Hai";
+
+    Card card;
+
+    CheckBox burned;
+    CheckBox poisoned;
+    CheckBox asleep;
+    CheckBox paralyzed;
+    CheckBox confused;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_card_config);
+
+        card= (Card) getIntent().getSerializableExtra(ASDF);
+
+        burned = (CheckBox) findViewById(R.id.checkBurned);
+        poisoned = (CheckBox) findViewById(R.id.checkPoisoned);
+        asleep = (CheckBox) findViewById(R.id.checkAsleep);
+        paralyzed = (CheckBox) findViewById(R.id.checkParalyzed);
+        confused = (CheckBox) findViewById(R.id.checkConfused);
+        Button evolve = (Button) findViewById(R.id.evolveBtn);
+
+        Button done= (Button) findViewById(R.id.doneBtn);
+
+        TextView curText= (TextView) findViewById(R.id.curCardText);
+
+        curText.setText("Current Card: " + card.getName());
+
+
+        burned.setChecked(false);
+        poisoned.setChecked(false);
+        asleep.setChecked(false);
+        paralyzed.setChecked(false);
+        confused.setChecked(false);
+
+
+        //Making sure the checkboxes are set correctly
+        burned.setChecked(card.isBurned());
+        poisoned.setChecked(card.isPoisoned());
+        asleep.setChecked(card.isAsleep());
+        paralyzed.setChecked(card.isParalyzed());
+        confused.setChecked(card.isConfused());
+
+
+
+        //Listeners for when the state is checked.
+        burned.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                card.setBurned(burned.isChecked());
+            }
+        });
+        poisoned.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                card.setPoisoned(poisoned.isChecked());
+            }
+        });
+        asleep.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                card.setAsleep(asleep.isChecked());
+            }
+        });
+        paralyzed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                card.setParalyzed(paralyzed.isChecked());
+            }
+        });
+        confused.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                card.setConfused(confused.isChecked());
+            }
+        });
+
+
+
+
+        evolve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(CardConfig.this, MainActivity.class);
+                card.clearConditions();
+                i.putExtra(MainActivity.MAIN_CARD, card);
+                startActivity(i);
+            }
+        });
+
+        done.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(CardConfig.this, MainActivity.class);
+                i.putExtra(MainActivity.MAIN_CARD, card);
+                startActivity(i);
+            }
+        });
+
+    }
+}

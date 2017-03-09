@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_card_config"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="comsitejtproductionshome.google.httpssites.pokemoncardgame.CardConfig">
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+
+        <CheckBox
+            android:text="Burned"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBurned"
+            android:textAlignment="viewStart" />
+
+        <CheckBox
+            android:text="Poisoned"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkPoisoned"
+            android:textAlignment="viewStart" />
+
+        <CheckBox
+            android:text="Asleep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkAsleep"
+            android:textAlignment="viewStart" />
+
+        <CheckBox
+            android:text="Paralyzed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkParalyzed"
+            android:textAlignment="viewStart" />
+
+        <CheckBox
+            android:text="Confused"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkConfused"
+            android:textAlignment="viewStart" />
+
+        <Button
+            android:text="Evolve/Clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/evolveBtn" />
+
+        <Button
+            android:text="Done"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/doneBtn" />
+    </RadioGroup>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/curCardText"
+        android:layout_marginBottom="96dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="center" />
+</RelativeLayout>
