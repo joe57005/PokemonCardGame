@@ -22,6 +22,8 @@ public class CardConfig extends AppCompatActivity {
     CheckBox paralyzed;
     CheckBox confused;
 
+    TextView curText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +41,9 @@ public class CardConfig extends AppCompatActivity {
 
         Button done= (Button) findViewById(R.id.doneBtn);
 
-        TextView curText= (TextView) findViewById(R.id.curCardText);
+        curText= (TextView) findViewById(R.id.curCardText);
 
-        curText.setText("Current Card: " + card.getName());
+        curText.setText(card.getName());
 
 
         burned.setChecked(false);
@@ -100,6 +102,7 @@ public class CardConfig extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i= new Intent(CardConfig.this, MainActivity.class);
                 card.clearConditions();
+                card.setName(curText.getText().toString());
                 i.putExtra(MainActivity.MAIN_CARD, card);
                 startActivity(i);
             }
@@ -109,6 +112,7 @@ public class CardConfig extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(CardConfig.this, MainActivity.class);
+                card.setName(curText.getText().toString());
                 i.putExtra(MainActivity.MAIN_CARD, card);
                 startActivity(i);
             }
