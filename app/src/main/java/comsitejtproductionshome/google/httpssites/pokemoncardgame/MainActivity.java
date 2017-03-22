@@ -69,8 +69,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
         public void coinFlipButton(){
-            Toast.makeText(getApplicationContext(), "Pressed.", Toast.LENGTH_LONG).show();
-            bc.coinFlip();
+            int choice= (int) (Math.random()*2);
+            if(choice==0){
+                Toast.makeText(getApplicationContext(), "Heads!", Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "Tails!", Toast.LENGTH_LONG).show();
+            }
         }
 
 
