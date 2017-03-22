@@ -98,13 +98,16 @@ public class Card implements Serializable{
 
 
 
-    public void doTurn(){
+    public int doTurn(){
         int decider;
+
+        int dangage=0;
 
         if(isBurned()){
             decider=(int) (Math.random()*(2));
             if(decider==1){
                 setDamage(damage+20);
+                dangage+=20;
             }
             else{
                //Nothing!
@@ -127,7 +130,10 @@ public class Card implements Serializable{
 
         if(isPoisoned()){
             setDamage(damage+10);
+            dangage+=10;
         }
+
+        return dangage;
     }
 
     public void clearConditions(){

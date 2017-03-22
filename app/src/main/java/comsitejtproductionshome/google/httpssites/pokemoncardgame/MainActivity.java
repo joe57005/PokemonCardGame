@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton imageButton;
     Button endStuff;
+    Button damage;
+    TextView damageText;
 
     public static final String MAIN_CARD="cardy";
 
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             cardArray[5]=temp;
         }
         else{
-            cardArray[5]= new Card("John Cena");
+            cardArray[5]= new Card("First Pokemon");
         }
 
 
@@ -43,11 +45,23 @@ public class MainActivity extends AppCompatActivity {
         imageButton= (ImageButton) findViewById(R.id.buttonCoinFlip);
         endStuff= (Button) findViewById(R.id.endButton);
         mainCardBtn= (Button) findViewById(R.id.cardMain);
+        damage= (Button) findViewById(R.id.damageBtn);
+        damageText= (TextView) findViewById(R.id.damageText);
+
+        damageText.setText(cardArray[5].getName() + " damage: " + cardArray[5].getDamage());
 
         endStuff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardArray[5].doTurn();
+                int dangy= cardArray[5].doTurn();
+                if(dangy==0){
+                    Toast.makeText(getApplicationContext(), cardArray[5].getName() + " sustained no points of damage!", Toast.LENGTH_LONG).show();
+                    damageText.setText(cardArray[5].getName() + " damage: " + cardArray[5].getDamage());
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), cardArray[5].getName() + " sustained " + dangy + " points of damage!", Toast.LENGTH_LONG).show();
+                    damageText.setText(cardArray[5].getName() + " damage: " + cardArray[5].getDamage());
+                }
             }
         });
 
@@ -55,6 +69,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 coinFlipButton();
+            }
+        });
+
+        damage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardArray[5].setDamage(cardArray[5].getDamage()+10);
+                damageText.setText(cardArray[5].getName() + " damage: " + cardArray[5].getDamage());
             }
         });
 
