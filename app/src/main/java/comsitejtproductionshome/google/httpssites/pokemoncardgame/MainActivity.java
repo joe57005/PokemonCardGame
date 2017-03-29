@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         for(int i=0; i<(cardArray.length-1); i++){
-            cardArray[i]=new Card("Pokemon " + 1);
+            cardArray[i]=new Card("Pokemon " + i);
         }
 
 
