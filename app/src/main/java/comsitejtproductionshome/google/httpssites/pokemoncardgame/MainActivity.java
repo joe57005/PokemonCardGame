@@ -124,29 +124,34 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void thisAppliesToAllCardsAndStuff(View v){
+            int tempy = 0;
+
+            if (v == findViewById(R.id.card1)) {
+                tempy = 0;
+            }
+            if (v == findViewById(R.id.card2)) {
+                tempy = 1;
+            }
+            if (v == findViewById(R.id.card3)) {
+                tempy = 2;
+            }
+            if (v == findViewById(R.id.card4)) {
+                tempy = 3;
+            }
+            if (v == findViewById(R.id.card5)) {
+                tempy = 4;
+            }
+
+            Log.i("hello", tempy + "");
+
             if(switchOn) {
-                int tempy = 0;
-
-                if (v == findViewById(R.id.card1)) {
-                    tempy = 0;
-                }
-                if (v == findViewById(R.id.card2)) {
-                    tempy = 1;
-                }
-                if (v == findViewById(R.id.card3)) {
-                    tempy = 2;
-                }
-                if (v == findViewById(R.id.card4)) {
-                    tempy = 3;
-                }
-                if (v == findViewById(R.id.card5)) {
-                    tempy = 4;
-                }
-
                 joesSwitchingMethod(tempy);
             }
             else{
-                //TODO Something else;
+                Intent i= new Intent(MainActivity.this, CardConfig.class);
+                card= cardArray[tempy];
+                i.putExtra(CardConfig.ASDF, card);
+                startActivity(i);
             }
         }
 
