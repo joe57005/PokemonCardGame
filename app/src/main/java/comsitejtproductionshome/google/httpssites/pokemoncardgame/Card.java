@@ -12,6 +12,7 @@ public class Card implements Serializable{
     private int damage;
 
     private String name;
+    private String nickName;
 
     private boolean burned;
     private boolean paralyzed;
@@ -21,6 +22,7 @@ public class Card implements Serializable{
 
     public Card(String name){
         this.name=name;
+        setNickName(name);
         damage=0;
     }
 
@@ -41,8 +43,19 @@ public class Card implements Serializable{
 
     public void setName(String name) {
         this.name = name;
+        setNickName(name);
     }
 
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String name) {
+        this.nickName="";
+        for(int i=0; i<3; i++){
+            this.nickName+=name.charAt(i);
+        }
+    }
 
     //Noted!
     //Signified by a burned symbol. Coin flipped between turns; if tails=20 damage. heads=no damage, but still burned.

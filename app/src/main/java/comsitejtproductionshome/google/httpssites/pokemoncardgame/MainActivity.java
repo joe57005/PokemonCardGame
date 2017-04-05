@@ -11,8 +11,21 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+/*
+Still to do:
+Animations for status effects
+Make it so the switch button also removes statuses on the current card.
+Add functionality to the "add" button
+
+Darude - Sandstorm
+ */
+
+
 public class MainActivity extends AppCompatActivity {
     ButtonControl bc=new ButtonControl();
+
+    static int forChangingCardInfo;
 
     ImageButton imageButton;
     Button endStuff;
@@ -22,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     Button switchy;
     boolean switchOn;
 
+    Button removey;
+    boolean removeOn;
+
     public static final String MAIN_CARD="cardy";
 
     Card card;
@@ -29,26 +45,32 @@ public class MainActivity extends AppCompatActivity {
     public static final Card[] cardArray= new Card[6];
     Card tempCard;
     //For swtiching cards.
+    Button[] cards= new Button[5];
+    Button mainCardBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button mainCardBtn;
 
         Card temp= (Card) getIntent().getSerializableExtra(MAIN_CARD);
+
         if(temp!=null) {
-            cardArray[5]=temp;
+            cardArray[forChangingCardInfo]=temp;
         }
-        else{
-            cardArray[5]= new Card("First Pokemon");
+        else {
+            cardArray[5] = new Card("First Pokemon");
+            for (int i = 0; i < (cardArray.length - 1); i++) {
+                cardArray[i] = new Card("Pk" + (i + 1));
+            }
         }
 
-        for(int i=0; i<(cardArray.length-1); i++){
-            cardArray[i]=new Card("Pokemon " + (i+1));
-        }
-
+        cards[0]= (Button) findViewById(R.id.card1);
+        cards[1]= (Button) findViewById(R.id.card2);
+        cards[2]= (Button) findViewById(R.id.card3);
+        cards[3]= (Button) findViewById(R.id.card4);
+        cards[4]= (Button) findViewById(R.id.card5);
 
 
         imageButton= (ImageButton) findViewById(R.id.buttonCoinFlip);
@@ -57,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         damage= (Button) findViewById(R.id.damageBtn);
         damageText= (TextView) findViewById(R.id.damageText);
         switchy= (Button) findViewById(R.id.nintendoSwitch);
-        switchy.setBackgroundColor(Color.GRAY);
+        removey= (Button) findViewById(R.id.removeBtn);
 
 
         updateText();
@@ -91,16 +113,6 @@ public class MainActivity extends AppCompatActivity {
                 updateText();
             }
         });
-
-        mainCardBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent i= new Intent(MainActivity.this, CardConfig.class);
-                card= cardArray[5];
-                i.putExtra(CardConfig.ASDF, card);
-                startActivity(i);
-            }
-        });
     }
         public void coinFlipButton(){
             int choice= (int) (Math.random()*2);
@@ -113,14 +125,35 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void switchListener(View v){
+            if(removeOn){
+                removeOn=!removeOn;
+            }
+
             switchOn=!switchOn;
 
             if(switchOn){
                 switchy.setBackgroundColor(Color.BLUE);
             }
             else {
-                switchy.setBackgroundColor(Color.GRAY);
+                switchy.setBackgroundColor(Color.LTGRAY);
             }
+        }
+
+
+        public void removeListener(View v){
+            if(switchOn){
+                switchOn=!switchOn;
+            }
+
+            removeOn=!removeOn;
+
+            if(removeOn){
+                removey.setBackgroundColor(Color.RED);
+            }
+            else {
+                removey.setBackgroundColor(Color.LTGRAY);
+            }
+
         }
 
         public void thisAppliesToAllCardsAndStuff(View v){
@@ -141,37 +174,58 @@ public class MainActivity extends AppCompatActivity {
             if (v == findViewById(R.id.card5)) {
                 tempy = 4;
             }
+            if (v == findViewById(R.id.cardMain)){
+                tempy = 5;
+            }
 
-            Log.i("hello", tempy + "");
+            //Log.i("hello", tempy + "");
 
             if(switchOn) {
                 joesSwitchingMethod(tempy);
+                switchOn=!switchOn;
+                switchy.setBackgroundColor(Color.LTGRAY);
+            }
+            else if(removeOn){
+                removingMethod(tempy);
+                removeOn=!removeOn;
+                removey.setBackgroundColor(Color.LTGRAY);
             }
             else{
+                forChangingCardInfo=tempy;
                 Intent i= new Intent(MainActivity.this, CardConfig.class);
                 card= cardArray[tempy];
                 i.putExtra(CardConfig.ASDF, card);
                 startActivity(i);
             }
+            updateText();
         }
 
         public void joesSwitchingMethod(int card){
             tempCard= cardArray[card];
             cardArray[card]=cardArray[5];
             cardArray[5]=tempCard;
-            updateText();
+        }
+
+        public void removingMethod(int card){
+            cardArray[card]=null;
         }
 
         public void updateText(){
+            for(int i=0; i<cardArray.length; i++){
+                if(cardArray[i]==null){
+                    cards[i].setText("No Pokemon");
+                }
+                else{
+                    if(i!=5) {
+                        cards[i].setText(cardArray[i].getNickName());
+                    }
+                    else{
+                        mainCardBtn.setText(cardArray[i].getNickName());
+                    }
+                }
+            }
             damageText.setText(cardArray[5].getName() + " damage: " + cardArray[5].getDamage());
         }
-
-
-//Test change
-
-
-
-
 
 
 }
