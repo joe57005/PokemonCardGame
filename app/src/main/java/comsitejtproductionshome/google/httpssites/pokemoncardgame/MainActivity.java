@@ -23,8 +23,6 @@ Darude - Sandstorm
 
 
 public class MainActivity extends AppCompatActivity {
-    ButtonControl bc=new ButtonControl();
-
     static int forChangingCardInfo;
 
     ImageButton imageButton;
@@ -61,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             cardArray[5] = new Card("First Pokemon");
-            for (int i = 0; i < (cardArray.length - 1); i++) {
-                cardArray[i] = new Card("Pk" + (i + 1));
-            }
+//            for (int i = 0; i < (cardArray.length - 1); i++) {
+//                cardArray[i] = new Card("Pk" + (i + 1));
+//            }
         }
 
         cards[0]= (Button) findViewById(R.id.card1);
@@ -210,14 +208,36 @@ public class MainActivity extends AppCompatActivity {
             cardArray[card]=null;
         }
 
+        public void addingMethod(View v){
+            boolean isFull=true;
+
+            for(int i=0; i<cardArray.length; i++){
+                if(cardArray[i]==null){
+                    cardArray[i]=new Card("Pkmn"+(i+1));
+                    i=cardArray.length;
+                    isFull=false;
+                }
+            }
+
+            if(isFull){
+                Toast.makeText(getApplicationContext(), "The bench is full!", Toast.LENGTH_LONG).show();
+            }
+
+            updateText();
+        }
+
         public void updateText(){
             for(int i=0; i<cardArray.length; i++){
                 if(cardArray[i]==null){
-                    cards[i].setText("No Pokemon");
+                    //cards[i].setText("No Pokemon");
+                    cards[i].setBackgroundColor(Color.BLACK);
+                    cards[i].setEnabled(false);
                 }
                 else{
                     if(i!=5) {
                         cards[i].setText(cardArray[i].getNickName());
+                        cards[i].setBackgroundColor(Color.LTGRAY);
+                        cards[i].setEnabled(true);
                     }
                     else{
                         mainCardBtn.setText(cardArray[i].getNickName());
