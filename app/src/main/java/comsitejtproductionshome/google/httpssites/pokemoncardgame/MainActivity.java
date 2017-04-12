@@ -1,6 +1,7 @@
 package comsitejtproductionshome.google.httpssites.pokemoncardgame;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
         Card temp= (Card) getIntent().getSerializableExtra(MAIN_CARD);
@@ -305,7 +307,13 @@ public class MainActivity extends AppCompatActivity {
                         int pB = cards[i].getPaddingBottom();
 
                         cards[i].setText(cardArray[i].getNickName());
-                        cards[i].setBackgroundColor(Color.LTGRAY);
+                        int widthCardBtns=(int)((getResources().getDisplayMetrics().widthPixels)/5.5);
+                        int heightCardBtns=(int)(widthCardBtns*1.35);
+                        ViewGroup.LayoutParams cardLP= (ViewGroup.LayoutParams)cards[1].getLayoutParams();
+                        LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(widthCardBtns,heightCardBtns );
+                        cards[i].setLayoutParams(cardParams);
+                        cards[i].setBackgroundResource(R.drawable.blankcard);
+
                         cards[i].setPadding(pL, pT, pR, pB);
                         cards[i].setEnabled(true);
                     }
