@@ -34,176 +34,155 @@
         android:text="10 points of damage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="14dp"
         android:id="@+id/damageBtn"
         android:layout_below="@+id/endButton"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/damageBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:id="@+id/damageText" />
-
-    <GridLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
 
-        <Space
-            android:layout_width="wrap_content"
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_rowWeight=".33"
-            android:layout_columnSpan="10"
-            android:layout_column="0"
-            />
+            android:layout_below="@+id/damageBtn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="26dp"
+            android:id="@+id/damageText"
+            android:textAlignment="center" />
 
         <Button
             android:text="Card 6"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
             android:layout_column="2"
             android:layout_row="8"
             android:layout_rowWeight=".2"
             android:layout_columnWeight=".2"
             android:id="@+id/cardMain"
-            android:onClick="thisAppliesToAllCardsAndStuff"/>
+            android:onClick="thisAppliesToAllCardsAndStuff"
+            android:layout_height="20dp"
+            android:textAlignment="center" />
 
-        <Space
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_columnSpan="2"
-            android:layout_row="8"
-            android:layout_rowWeight=".2"
-            android:layout_columnWeight=".4"/>
-        <Space
+            android:layout_gravity="center_horizontal"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:text="Add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnAddCard"
+                android:layout_row="9"
+                android:layout_columnWeight=".33"
+                android:layout_rowWeight=".07"
+                android:layout_column="0"
+                android:layout_weight="1" />
+
+            <Button
+                android:text="Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nintendoSwitch"
+                android:layout_column="1"
+                android:layout_columnSpan="3"
+                android:layout_row="9"
+                android:layout_rowWeight=".07"
+                android:layout_columnWeight=".33"
+                android:onClick="switchListener"
+                android:layout_weight="1" />
+
+            <Button
+                android:text="Discard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnRemoveCard"
+                android:layout_row="9"
+                android:layout_rowWeight=".07"
+                android:layout_columnWeight=".33"
+                android:layout_column="4"
+                android:onClick="removeListener"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="3"
-            android:layout_columnSpan="2"
-            android:layout_row="8"
-            android:layout_rowWeight=".2"
-            android:layout_columnWeight=".4"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/linLayBottomCards">
 
-        <Button
-            android:text="Add"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:id="@+id/button2"
-            android:layout_row="9"
-            android:layout_columnWeight=".33"
-            android:layout_rowWeight=".07"
-            android:layout_column="0" />
+            <Button
+                android:text="Card 5"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_columnWeight=".2"
+                android:layout_rowWeight=".2"
+                android:id="@+id/card5"
+                android:layout_row="10"
+                android:layout_column="80"
+                android:layout_columnSpan="20"
+                android:onClick="thisAppliesToAllCardsAndStuff"/>
 
-        <Button
-            android:text="Switch"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:id="@+id/nintendoSwitch"
-            android:layout_column="1"
-            android:layout_columnSpan="3"
-            android:layout_row="9"
-            android:layout_rowWeight=".07"
-            android:layout_columnWeight=".33"
-            android:onClick="switchListener" />
+            <Button
+                android:text="Card 4"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_columnWeight=".2"
+                android:layout_rowWeight=".2"
+                android:id="@+id/card4"
+                android:layout_row="10"
+                android:layout_column="60"
+                android:layout_columnSpan="20"
+                android:onClick="thisAppliesToAllCardsAndStuff"/>
 
-        <Button
-            android:text="Discard"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:id="@+id/removeBtn"
-            android:layout_row="9"
-            android:layout_rowWeight=".07"
-            android:layout_columnWeight=".33"
-            android:layout_column="4"
-            android:onClick="removeListener"/>
+            <Button
+                android:text="Card 3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_columnWeight=".2"
+                android:layout_rowWeight=".2"
+                android:id="@+id/card3"
+                android:layout_row="10"
+                android:layout_column="40"
+                android:layout_columnSpan="20"
+                android:onClick="thisAppliesToAllCardsAndStuff"/>
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_rowWeight=".2"
-            android:layout_row="10"
-            />
+            <Button
+                android:text="Card 2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_columnWeight=".2"
+                android:layout_rowWeight=".2"
+                android:id="@+id/card2"
+                android:layout_row="10"
+                android:layout_column="20"
+                android:layout_columnSpan="20"
+                android:onClick="thisAppliesToAllCardsAndStuff"/>
 
-    </GridLayout>
+            <Button
+                android:text="Card 1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_columnWeight=".2"
+                android:layout_rowWeight=".2"
+                android:id="@+id/card1"
+                android:layout_row="10"
+                android:layout_column="0"
+                android:layout_columnSpan="20"
+                android:onClick="thisAppliesToAllCardsAndStuff" />
+        </LinearLayout>
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/gridlayout_cards"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:layout_columnSpan="5"
-            android:layout_rowSpan="1"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight=".6"
-            />
-
-        <Button
-            android:text="Card 5"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight=".2"
-            android:layout_rowWeight=".2"
-            android:id="@+id/card5"
-            android:layout_row="10"
-            android:layout_column="4"
-            android:onClick="thisAppliesToAllCardsAndStuff"/>
-
-        <Button
-            android:text="Card 4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight=".2"
-            android:layout_rowWeight=".2"
-            android:id="@+id/card4"
-            android:layout_row="10"
-            android:layout_column="3"
-            android:onClick="thisAppliesToAllCardsAndStuff"/>
-
-        <Button
-            android:text="Card 3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight=".2"
-            android:layout_rowWeight=".2"
-            android:id="@+id/card3"
-            android:layout_row="10"
-            android:layout_column="2"
-            android:onClick="thisAppliesToAllCardsAndStuff"/>
-
-        <Button
-            android:text="Card 2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight=".2"
-            android:layout_rowWeight=".2"
-            android:id="@+id/card2"
-            android:layout_row="10"
-            android:layout_column="1"
-            android:onClick="thisAppliesToAllCardsAndStuff"/>
-
-        <Button
-            android:text="Card 1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight=".2"
-            android:layout_rowWeight=".2"
-            android:id="@+id/card1"
-            android:layout_row="10"
-            android:layout_column="0"
-            android:onClick="thisAppliesToAllCardsAndStuff" />
+    </LinearLayout>
 
 
-    </GridLayout>
 </RelativeLayout>

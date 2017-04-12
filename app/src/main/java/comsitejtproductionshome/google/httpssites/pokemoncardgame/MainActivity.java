@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final Card[] cardArray= new Card[6];
     Card tempCard;
-    //For swtiching cards.
-    Button[] cards= new Button[5];
+    //For swtiching cardBtns.
+    Button[] cardBtns = new Button[5];
     Button mainCardBtn;
 
     @Override
@@ -66,11 +68,14 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        cards[0]= (Button) findViewById(R.id.card1);
-        cards[1]= (Button) findViewById(R.id.card2);
-        cards[2]= (Button) findViewById(R.id.card3);
-        cards[3]= (Button) findViewById(R.id.card4);
-        cards[4]= (Button) findViewById(R.id.card5);
+        cardBtns[0]= (Button) findViewById(R.id.card1);
+        cardBtns[1]= (Button) findViewById(R.id.card2);
+        cardBtns[2]= (Button) findViewById(R.id.card3);
+        cardBtns[3]= (Button) findViewById(R.id.card4);
+        cardBtns[4]= (Button) findViewById(R.id.card5);
+
+
+
 
 
         imageButton= (ImageButton) findViewById(R.id.buttonCoinFlip);
@@ -79,7 +84,9 @@ public class MainActivity extends AppCompatActivity {
         damage= (Button) findViewById(R.id.damageBtn);
         damageText= (TextView) findViewById(R.id.damageText);
         switchy= (Button) findViewById(R.id.nintendoSwitch);
-        removey= (Button) findViewById(R.id.removeBtn);
+        removey= (Button) findViewById(R.id.btnRemoveCard);
+
+        initButtonGraphics();
 
 
         updateText();
@@ -114,6 +121,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void initButtonGraphics(){
+        //make all buttons the same size as a pokemon card
+        int widthCardBtns=(int)((getResources().getDisplayMetrics().widthPixels)/5.5);
+        int heightCardBtns=(int)(widthCardBtns*1.35);
+        ViewGroup.LayoutParams cardLP= (ViewGroup.LayoutParams)cardBtns[1].getLayoutParams();
+        LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(widthCardBtns,heightCardBtns );
+        mainCardBtn.setLayoutParams(cardParams);
+        mainCardBtn.setBackgroundResource(R.drawable.blankcard);
+//        mainCardBtn.setGravity(Gravity.CENTER_HORIZONTAL);
+        for(int i=0;i<cardBtns.length;i++){
+            cardBtns[i].setLayoutParams(cardParams);
+            cardBtns[i].setBackgroundResource(R.drawable.blankcard);
+
+        }
+    }
+
         public void coinFlipButton(){
             int choice= (int) (Math.random()*2);
             if(choice==0){
@@ -213,11 +237,11 @@ public class MainActivity extends AppCompatActivity {
         public void updateText(){
             for(int i=0; i<cardArray.length; i++){
                 if(cardArray[i]==null){
-                    cards[i].setText("No Pokemon");
+                    cardBtns[i].setText("No Pokemon");
                 }
                 else{
                     if(i!=5) {
-                        cards[i].setText(cardArray[i].getNickName());
+                        cardBtns[i].setText(cardArray[i].getNickName());
                     }
                     else{
                         mainCardBtn.setText(cardArray[i].getNickName());
