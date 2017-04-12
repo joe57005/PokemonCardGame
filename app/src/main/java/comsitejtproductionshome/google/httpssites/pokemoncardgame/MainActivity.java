@@ -3,6 +3,7 @@ package comsitejtproductionshome.google.httpssites.pokemoncardgame;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.support.annotation.DrawableRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     Button removey;
     boolean removeOn;
+
+    Button addBtn;
 
     public static final String MAIN_CARD="cardy";
 
@@ -82,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         damageText= (TextView) findViewById(R.id.damageText);
         switchy= (Button) findViewById(R.id.nintendoSwitch);
         removey= (Button) findViewById(R.id.btnRemoveCard);
+        addBtn=(Button) findViewById(R.id.btnAddCard);
 
         initButtonGraphics();
 
@@ -127,12 +131,15 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(widthCardBtns,heightCardBtns );
         mainCardBtn.setLayoutParams(cardParams);
         mainCardBtn.setBackgroundResource(R.drawable.blankcard);
+        removey.setBackgroundColor(Color.LTGRAY);
+        addBtn.setBackgroundColor(Color.LTGRAY);
+        switchy.setBackgroundColor(Color.LTGRAY);
 //        mainCardBtn.setGravity(Gravity.CENTER_HORIZONTAL);
-        for(int i=0;i<cards.length;i++){
-            cards[i].setLayoutParams(cardParams);
-            cards[i].setBackgroundResource(R.drawable.blankcard);
-
-        }
+//        for(int i=0;i<cards.length;i++){
+//            cards[i].setLayoutParams(cardParams);
+//            cards[i].setBackgroundResource(R.drawable.blankcard);
+//
+//        }
     }
 
         public void coinFlipButton(){
@@ -301,10 +308,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else{
                     if(i!=5) {
-                        int pL = cards[i].getPaddingLeft();
-                        int pT = cards[i].getPaddingTop();
-                        int pR = cards[i].getPaddingRight();
-                        int pB = cards[i].getPaddingBottom();
+//                        int pL = cards[i].getPaddingLeft();
+//                        int pT = cards[i].getPaddingTop();
+//                        int pR = cards[i].getPaddingRight();
+//                        int pB = cards[i].getPaddingBottom();
 
                         cards[i].setText(cardArray[i].getNickName());
                         int widthCardBtns=(int)((getResources().getDisplayMetrics().widthPixels)/5.5);
@@ -314,7 +321,7 @@ public class MainActivity extends AppCompatActivity {
                         cards[i].setLayoutParams(cardParams);
                         cards[i].setBackgroundResource(R.drawable.blankcard);
 
-                        cards[i].setPadding(pL, pT, pR, pB);
+//                        cards[i].setPadding(pL, pT, pR, pB);
                         cards[i].setEnabled(true);
                     }
                     else{
