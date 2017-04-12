@@ -121,14 +121,14 @@ public class MainActivity extends AppCompatActivity {
         //make all buttons the same size as a pokemon card
         int widthCardBtns=(int)((getResources().getDisplayMetrics().widthPixels)/5.5);
         int heightCardBtns=(int)(widthCardBtns*1.35);
-        ViewGroup.LayoutParams cardLP= (ViewGroup.LayoutParams)cardBtns[1].getLayoutParams();
+        ViewGroup.LayoutParams cardLP= (ViewGroup.LayoutParams)cards[1].getLayoutParams();
         LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(widthCardBtns,heightCardBtns );
         mainCardBtn.setLayoutParams(cardParams);
         mainCardBtn.setBackgroundResource(R.drawable.blankcard);
 //        mainCardBtn.setGravity(Gravity.CENTER_HORIZONTAL);
-        for(int i=0;i<cardBtns.length;i++){
-            cardBtns[i].setLayoutParams(cardParams);
-            cardBtns[i].setBackgroundResource(R.drawable.blankcard);
+        for(int i=0;i<cards.length;i++){
+            cards[i].setLayoutParams(cardParams);
+            cards[i].setBackgroundResource(R.drawable.blankcard);
 
         }
     }
