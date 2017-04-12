@@ -130,10 +130,22 @@ public class MainActivity extends AppCompatActivity {
             switchOn=!switchOn;
 
             if(switchOn){
+                int pL = switchy.getPaddingLeft();
+                int pT = switchy.getPaddingTop();
+                int pR = switchy.getPaddingRight();
+                int pB = switchy.getPaddingBottom();
+
                 switchy.setBackgroundColor(Color.BLUE);
+                switchy.setPadding(pL, pT, pR, pB);
             }
             else {
+                int pL = switchy.getPaddingLeft();
+                int pT = switchy.getPaddingTop();
+                int pR = switchy.getPaddingRight();
+                int pB = switchy.getPaddingBottom();
+
                 switchy.setBackgroundColor(Color.LTGRAY);
+                switchy.setPadding(pL, pT, pR, pB);
             }
         }
 
@@ -146,10 +158,22 @@ public class MainActivity extends AppCompatActivity {
             removeOn=!removeOn;
 
             if(removeOn){
+                int pL = removey.getPaddingLeft();
+                int pT = removey.getPaddingTop();
+                int pR = removey.getPaddingRight();
+                int pB = removey.getPaddingBottom();
+
                 removey.setBackgroundColor(Color.RED);
+                removey.setPadding(pL, pT, pR, pB);
             }
             else {
+                int pL = removey.getPaddingLeft();
+                int pT = removey.getPaddingTop();
+                int pR = removey.getPaddingRight();
+                int pB = removey.getPaddingBottom();
+
                 removey.setBackgroundColor(Color.LTGRAY);
+                removey.setPadding(pL, pT, pR, pB);
             }
 
         }
@@ -179,14 +203,26 @@ public class MainActivity extends AppCompatActivity {
             //Log.i("hello", tempy + "");
 
             if(switchOn) {
+                int pL = switchy.getPaddingLeft();
+                int pT = switchy.getPaddingTop();
+                int pR = switchy.getPaddingRight();
+                int pB = switchy.getPaddingBottom();
+
                 joesSwitchingMethod(tempy);
                 switchOn=!switchOn;
                 switchy.setBackgroundColor(Color.LTGRAY);
+                switchy.setPadding(pL, pT, pR, pB);
             }
             else if(removeOn){
+                int pL = removey.getPaddingLeft();
+                int pT = removey.getPaddingTop();
+                int pR = removey.getPaddingRight();
+                int pB = removey.getPaddingBottom();
+
                 removingMethod(tempy);
                 removeOn=!removeOn;
                 removey.setBackgroundColor(Color.LTGRAY);
+                removey.setPadding(pL, pT, pR, pB);
             }
             else{
                 forChangingCardInfo=tempy;
@@ -229,14 +265,27 @@ public class MainActivity extends AppCompatActivity {
         public void updateText(){
             for(int i=0; i<cardArray.length; i++){
                 if(cardArray[i]==null){
+
+                    int pL = cards[i].getPaddingLeft();
+                    int pT = cards[i].getPaddingTop();
+                    int pR = cards[i].getPaddingRight();
+                    int pB = cards[i].getPaddingBottom();
+
                     //cards[i].setText("No Pokemon");
                     cards[i].setBackgroundColor(Color.BLACK);
+                    cards[i].setPadding(pL, pT, pR, pB);
                     cards[i].setEnabled(false);
                 }
                 else{
                     if(i!=5) {
+                        int pL = cards[i].getPaddingLeft();
+                        int pT = cards[i].getPaddingTop();
+                        int pR = cards[i].getPaddingRight();
+                        int pB = cards[i].getPaddingBottom();
+
                         cards[i].setText(cardArray[i].getNickName());
                         cards[i].setBackgroundColor(Color.LTGRAY);
+                        cards[i].setPadding(pL, pT, pR, pB);
                         cards[i].setEnabled(true);
                     }
                     else{
