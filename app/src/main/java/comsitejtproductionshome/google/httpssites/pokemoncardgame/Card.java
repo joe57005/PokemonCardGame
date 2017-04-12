@@ -52,7 +52,7 @@ public class Card implements Serializable{
 
     public void setNickName(String name) {
         this.nickName="";
-        for(int i=0; i<3; i++){
+        for(int i=0; i<5; i++){
             this.nickName+=name.charAt(i);
         }
     }

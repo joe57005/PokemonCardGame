@@ -25,8 +25,6 @@ Darude - Sandstorm
 
 
 public class MainActivity extends AppCompatActivity {
-    ButtonControl bc=new ButtonControl();
-
     static int forChangingCardInfo;
 
     ImageButton imageButton;
@@ -46,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final Card[] cardArray= new Card[6];
     Card tempCard;
-    //For swtiching cardBtns.
-    Button[] cardBtns = new Button[5];
+    //For swtiching cards.
+    Button[] cards= new Button[5];
     Button mainCardBtn;
 
     @Override
@@ -63,19 +61,16 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             cardArray[5] = new Card("First Pokemon");
-            for (int i = 0; i < (cardArray.length - 1); i++) {
-                cardArray[i] = new Card("Pk" + (i + 1));
-            }
+//            for (int i = 0; i < (cardArray.length - 1); i++) {
+//                cardArray[i] = new Card("Pk" + (i + 1));
+//            }
         }
 
-        cardBtns[0]= (Button) findViewById(R.id.card1);
-        cardBtns[1]= (Button) findViewById(R.id.card2);
-        cardBtns[2]= (Button) findViewById(R.id.card3);
-        cardBtns[3]= (Button) findViewById(R.id.card4);
-        cardBtns[4]= (Button) findViewById(R.id.card5);
-
-
-
+        cards[0]= (Button) findViewById(R.id.card1);
+        cards[1]= (Button) findViewById(R.id.card2);
+        cards[2]= (Button) findViewById(R.id.card3);
+        cards[3]= (Button) findViewById(R.id.card4);
+        cards[4]= (Button) findViewById(R.id.card5);
 
 
         imageButton= (ImageButton) findViewById(R.id.buttonCoinFlip);
@@ -156,10 +151,22 @@ public class MainActivity extends AppCompatActivity {
             switchOn=!switchOn;
 
             if(switchOn){
+                int pL = switchy.getPaddingLeft();
+                int pT = switchy.getPaddingTop();
+                int pR = switchy.getPaddingRight();
+                int pB = switchy.getPaddingBottom();
+
                 switchy.setBackgroundColor(Color.BLUE);
+                switchy.setPadding(pL, pT, pR, pB);
             }
             else {
+                int pL = switchy.getPaddingLeft();
+                int pT = switchy.getPaddingTop();
+                int pR = switchy.getPaddingRight();
+                int pB = switchy.getPaddingBottom();
+
                 switchy.setBackgroundColor(Color.LTGRAY);
+                switchy.setPadding(pL, pT, pR, pB);
             }
         }
 
@@ -172,10 +179,22 @@ public class MainActivity extends AppCompatActivity {
             removeOn=!removeOn;
 
             if(removeOn){
+                int pL = removey.getPaddingLeft();
+                int pT = removey.getPaddingTop();
+                int pR = removey.getPaddingRight();
+                int pB = removey.getPaddingBottom();
+
                 removey.setBackgroundColor(Color.RED);
+                removey.setPadding(pL, pT, pR, pB);
             }
             else {
+                int pL = removey.getPaddingLeft();
+                int pT = removey.getPaddingTop();
+                int pR = removey.getPaddingRight();
+                int pB = removey.getPaddingBottom();
+
                 removey.setBackgroundColor(Color.LTGRAY);
+                removey.setPadding(pL, pT, pR, pB);
             }
 
         }
@@ -205,14 +224,26 @@ public class MainActivity extends AppCompatActivity {
             //Log.i("hello", tempy + "");
 
             if(switchOn) {
+                int pL = switchy.getPaddingLeft();
+                int pT = switchy.getPaddingTop();
+                int pR = switchy.getPaddingRight();
+                int pB = switchy.getPaddingBottom();
+
                 joesSwitchingMethod(tempy);
                 switchOn=!switchOn;
                 switchy.setBackgroundColor(Color.LTGRAY);
+                switchy.setPadding(pL, pT, pR, pB);
             }
             else if(removeOn){
+                int pL = removey.getPaddingLeft();
+                int pT = removey.getPaddingTop();
+                int pR = removey.getPaddingRight();
+                int pB = removey.getPaddingBottom();
+
                 removingMethod(tempy);
                 removeOn=!removeOn;
                 removey.setBackgroundColor(Color.LTGRAY);
+                removey.setPadding(pL, pT, pR, pB);
             }
             else{
                 forChangingCardInfo=tempy;
@@ -234,14 +265,49 @@ public class MainActivity extends AppCompatActivity {
             cardArray[card]=null;
         }
 
+        public void addingMethod(View v){
+            boolean isFull=true;
+
+            for(int i=0; i<cardArray.length; i++){
+                if(cardArray[i]==null){
+                    cardArray[i]=new Card("Pkmn"+(i+1));
+                    i=cardArray.length;
+                    isFull=false;
+                }
+            }
+
+            if(isFull){
+                Toast.makeText(getApplicationContext(), "The bench is full!", Toast.LENGTH_LONG).show();
+            }
+
+            updateText();
+        }
+
         public void updateText(){
             for(int i=0; i<cardArray.length; i++){
                 if(cardArray[i]==null){
-                    cardBtns[i].setText("No Pokemon");
+
+                    int pL = cards[i].getPaddingLeft();
+                    int pT = cards[i].getPaddingTop();
+                    int pR = cards[i].getPaddingRight();
+                    int pB = cards[i].getPaddingBottom();
+
+                    //cards[i].setText("No Pokemon");
+                    cards[i].setBackgroundColor(Color.BLACK);
+                    cards[i].setPadding(pL, pT, pR, pB);
+                    cards[i].setEnabled(false);
                 }
                 else{
                     if(i!=5) {
-                        cardBtns[i].setText(cardArray[i].getNickName());
+                        int pL = cards[i].getPaddingLeft();
+                        int pT = cards[i].getPaddingTop();
+                        int pR = cards[i].getPaddingRight();
+                        int pB = cards[i].getPaddingBottom();
+
+                        cards[i].setText(cardArray[i].getNickName());
+                        cards[i].setBackgroundColor(Color.LTGRAY);
+                        cards[i].setPadding(pL, pT, pR, pB);
+                        cards[i].setEnabled(true);
                     }
                     else{
                         mainCardBtn.setText(cardArray[i].getNickName());
