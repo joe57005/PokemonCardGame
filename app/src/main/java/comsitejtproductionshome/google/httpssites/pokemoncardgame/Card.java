@@ -52,8 +52,14 @@ public class Card implements Serializable{
 
     public void setNickName(String name) {
         this.nickName="";
-        for(int i=0; i<5; i++){
-            this.nickName+=name.charAt(i);
+        int length=name.length();
+        if(name.length()>5){
+            length=5;
+        }
+
+        for(int i=0; i<length; i++){
+                this.nickName += name.charAt(i);
+
         }
     }
 

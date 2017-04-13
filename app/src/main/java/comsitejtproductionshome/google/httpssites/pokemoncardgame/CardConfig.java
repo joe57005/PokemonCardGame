@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -115,7 +117,10 @@ public class CardConfig extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(CardConfig.this, MainActivity.class);
-                card.setName(curText.getText().toString());
+                if(!TextUtils.isEmpty(curText.getText())){
+                    CharSequence theText=curText.getText();
+                    card.setName(theText.toString());
+                }
                 i.putExtra(MainActivity.MAIN_CARD, card);
                 startActivity(i);
             }
