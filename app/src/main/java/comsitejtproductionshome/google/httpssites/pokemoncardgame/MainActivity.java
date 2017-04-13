@@ -3,15 +3,14 @@ package comsitejtproductionshome.google.httpssites.pokemoncardgame;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
-import android.support.annotation.DrawableRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        ((RelativeLayout)findViewById(R.id.activity_main)).setBackgroundResource(R.drawable.background_color);
 
 
         Card temp= (Card) getIntent().getSerializableExtra(MAIN_CARD);
@@ -131,9 +131,14 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(widthCardBtns,heightCardBtns );
         mainCardBtn.setLayoutParams(cardParams);
         mainCardBtn.setBackgroundResource(R.drawable.blankcard);
+
+
         removey.setBackgroundColor(Color.LTGRAY);
+        removey.setPadding(5,5,5,5);
         addBtn.setBackgroundColor(Color.LTGRAY);
+        addBtn.setPadding(5,5,5,5);
         switchy.setBackgroundColor(Color.LTGRAY);
+        switchy.setPadding(5,5,5,5);
 //        mainCardBtn.setGravity(Gravity.CENTER_HORIZONTAL);
 //        for(int i=0;i<cards.length;i++){
 //            cards[i].setLayoutParams(cardParams);
@@ -303,6 +308,7 @@ public class MainActivity extends AppCompatActivity {
 
                     //cards[i].setText("No Pokemon");
                     cards[i].setBackgroundColor(Color.BLACK);
+                    cards[i].setLayoutParams(new LinearLayout.LayoutParams(0,0));
                     cards[i].setPadding(pL, pT, pR, pB);
                     cards[i].setEnabled(false);
                 }
@@ -313,7 +319,10 @@ public class MainActivity extends AppCompatActivity {
 //                        int pR = cards[i].getPaddingRight();
 //                        int pB = cards[i].getPaddingBottom();
 
-                        cards[i].setText(cardArray[i].getNickName());
+                        cards[i].setText(cardArray[i].getNickName()+"\n"+cardArray[i].getDamage());
+
+
+
                         int widthCardBtns=(int)((getResources().getDisplayMetrics().widthPixels)/5.5);
                         int heightCardBtns=(int)(widthCardBtns*1.35);
                         ViewGroup.LayoutParams cardLP= (ViewGroup.LayoutParams)cards[1].getLayoutParams();
@@ -325,7 +334,7 @@ public class MainActivity extends AppCompatActivity {
                         cards[i].setEnabled(true);
                     }
                     else{
-                        mainCardBtn.setText(cardArray[i].getNickName());
+                        mainCardBtn.setText(cardArray[i].getNickName()+"\n"+cardArray[i].getDamage());
                     }
                 }
             }
