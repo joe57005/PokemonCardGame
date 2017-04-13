@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ps"
+    android:oneshot="false">
+    <item android:drawable="@drawable/ps00000" android:duration="60"/>
+    <item android:drawable="@drawable/ps00001" android:duration="60"/>
+    <item android:drawable="@drawable/ps00002" android:duration="60"/>
+    <item android:drawable="@drawable/ps00003" android:duration="60"/>
+    <item android:drawable="@drawable/ps00004" android:duration="60"/>
+    <item android:drawable="@drawable/ps00005" android:duration="60"/>
+    <item android:drawable="@drawable/ps00006" android:duration="60"/>
+    <item android:drawable="@drawable/ps00007" android:duration="60"/>
+    <item android:drawable="@drawable/ps00008" android:duration="60"/>
+    <item android:drawable="@drawable/ps00009" android:duration="60"/>
+    <item android:drawable="@drawable/ps00010" android:duration="60"/>
+    <item android:drawable="@drawable/ps00011" android:duration="60"/>
+    <item android:drawable="@drawable/ps00012" android:duration="60"/>
+    <item android:drawable="@drawable/ps00013" android:duration="60"/>
+    <item android:drawable="@drawable/ps00014" android:duration="60"/>
+    <item android:drawable="@drawable/ps00015" android:duration="60"/>
+    <item android:drawable="@drawable/ps00016" android:duration="60"/>
+    <item android:drawable="@drawable/ps00017" android:duration="60"/>
+    <item android:drawable="@drawable/ps00018" android:duration="60"/>
+    <item android:drawable="@drawable/ps00019" android:duration="60"/>
+</animation-list>

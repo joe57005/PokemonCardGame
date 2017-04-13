@@ -3,8 +3,12 @@ package comsitejtproductionshome.google.httpssites.pokemoncardgame;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -48,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
     public static final Card[] cardArray= new Card[6];
     Card tempCard;
     //For swtiching cards.
-    Button[] cards= new Button[5];
-    Button mainCardBtn;
+    Button[] cards= new Button[6];
+   // Button cards[6];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
         imageButton= (ImageButton) findViewById(R.id.buttonCoinFlip);
         endStuff= (Button) findViewById(R.id.endButton);
-        mainCardBtn= (Button) findViewById(R.id.cardMain);
+        cards[5]= (Button) findViewById(R.id.cardMain);
         damage= (Button) findViewById(R.id.damageBtn);
         damageText= (TextView) findViewById(R.id.damageText);
         switchy= (Button) findViewById(R.id.nintendoSwitch);
@@ -129,8 +133,8 @@ public class MainActivity extends AppCompatActivity {
         int heightCardBtns=(int)(widthCardBtns*1.35);
         ViewGroup.LayoutParams cardLP= (ViewGroup.LayoutParams)cards[1].getLayoutParams();
         LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(widthCardBtns,heightCardBtns );
-        mainCardBtn.setLayoutParams(cardParams);
-        mainCardBtn.setBackgroundResource(R.drawable.blankcard);
+        cards[5].setLayoutParams(cardParams);
+        cards[5].setBackgroundResource(R.drawable.blankcard);
 
 
         removey.setBackgroundColor(Color.LTGRAY);
@@ -332,14 +336,111 @@ public class MainActivity extends AppCompatActivity {
 
 //                        cards[i].setPadding(pL, pT, pR, pB);
                         cards[i].setEnabled(true);
+                       if(cardArray[i] != null){setAnim(i,cardArray[i].isBurned(),cardArray[i].isConfused(),cardArray[i].isPoisoned(),cardArray[i].isAsleep());}
                     }
                     else{
-                        mainCardBtn.setText(cardArray[i].getNickName()+"\n"+cardArray[i].getDamage());
+                        cards[5].setText(cardArray[i].getNickName()+"\n"+cardArray[i].getDamage());
+                        if(cardArray[i] != null){setAnim(i,cardArray[i].isBurned(),cardArray[i].isConfused(),cardArray[i].isPoisoned(),cardArray[i].isAsleep());}
                     }
                 }
             }
             damageText.setText(cardArray[5].getName() + " damage: " + cardArray[5].getDamage());
+
         }
 
+
+//so this takes up a butt ton of ram!
+        public void setAnim(int butt, boolean burned, boolean confused, boolean poisoned, boolean sleeping){
+
+            AnimationDrawable cani;
+            Log.d("jdebug","animation set");
+            if(!burned && !sleeping && !confused && !poisoned){
+                //set default background
+                cards[butt].setBackgroundResource(R.drawable.blankcard);
+                return;
+            }
+            if(!burned && !confused && !poisoned && sleeping){
+                cards[butt].setBackgroundResource(R.drawable.sleeping);
+                cani = (AnimationDrawable) cards[butt].getBackground();
+                cani.start();
+            }
+            if(!burned && !confused && poisoned && !sleeping){
+                cards[butt].setBackgroundResource(R.drawable.poisoned);
+                cani = (AnimationDrawable) cards[butt].getBackground();
+                cani.start();
+            }
+            if(!burned && !confused && poisoned && sleeping){
+                cards[butt].setBackgroundResource(R.drawable.ps);
+                cani = (AnimationDrawable) cards[butt].getBackground();
+                cani.start();
+            }
+            if(!burned && confused && !poisoned && !sleeping){
+                cards[butt].setBackgroundResource(R.drawable.confused);
+                cani = (AnimationDrawable) cards[butt].getBackground();
+                cani.start();
+            }
+            if(!burned && confused && !poisoned && sleeping){
+                cards[butt].setBackgroundResource(R.drawable.cs);
+                cani = (AnimationDrawable) cards[butt].getBackground();
+                cani.start();
+            }
+            if(!burned && confused && poisoned && !sleeping){
+                cards[butt].setBackgroundResource(R.drawable.cp);
+                cani = (AnimationDrawable) cards[butt].getBackground();
+                cani.start();
+            }
+            if(!burned && confused && poisoned && sleeping){
+                cards[butt].setBackgroundResource(R.drawable.cps);
+                cani = (AnimationDrawable) cards[butt].getBackground();
+                cani.start();
+            }
+            if(burned && !confused && !poisoned && !sleeping){
+                cards[butt].setBackgroundResource(R.drawable.burned);
+                cani = (AnimationDrawable) cards[butt].getBackground();
+                cani.start();
+            }
+            if(burned && !confused && !poisoned && sleeping){
+                cards[butt].setBackgroundResource(R.drawable.bs);
+                cani = (AnimationDrawable) cards[butt].getBackground();
+                cani.start();
+            }
+            if(burned && !confused && poisoned && !sleeping){
+                cards[butt].setBackgroundResource(R.drawable.bp);
+                cani = (AnimationDrawable) cards[butt].getBackground();
+                cani.start();
+            }
+            if(burned && !confused && poisoned && sleeping){
+                cards[butt].setBackgroundResource(R.drawable.bps);
+                cani = (AnimationDrawable) cards[butt].getBackground();
+                cani.start();
+            }
+            if(burned && confused && !poisoned && !sleeping){
+                cards[butt].setBackgroundResource(R.drawable.bc);
+                cani = (AnimationDrawable) cards[butt].getBackground();
+                cani.start();
+            }
+            if(burned && confused && !poisoned && sleeping){
+                cards[butt].setBackgroundResource(R.drawable.bcs);
+                cani = (AnimationDrawable) cards[butt].getBackground();
+                cani.start();
+            }
+            if(burned && confused && poisoned && !sleeping){
+                cards[butt].setBackgroundResource(R.drawable.bcp);
+                cani = (AnimationDrawable) cards[butt].getBackground();
+                cani.start();
+            }
+            if(burned && confused && poisoned && sleeping){
+                cards[butt].setBackgroundResource(R.drawable.bcps);
+                cani = (AnimationDrawable) cards[butt].getBackground();
+                cani.start();
+            }
+
+
+
+
+
+
+
+        }
 
 }

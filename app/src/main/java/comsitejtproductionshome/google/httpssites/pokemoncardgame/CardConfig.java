@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class CardConfig extends AppCompatActivity {
@@ -43,7 +44,7 @@ public class CardConfig extends AppCompatActivity {
 
         Button done= (Button) findViewById(R.id.doneBtn);
 
-        curText= (TextView) findViewById(R.id.curCardText);
+        curText= (EditText) findViewById(R.id.curCardText);
 
         curText.setText(card.getName());
 
