@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton imageButton;
     Button endStuff;
     Button damage;
+    Button heal;
     TextView damageText;
 
     Button switchy;
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         endStuff= (Button) findViewById(R.id.endButton);
         cards[5]= (Button) findViewById(R.id.cardMain);
         damage= (Button) findViewById(R.id.damageBtn);
+        heal=(Button) findViewById(R.id.btnHeal);
         damageText= (TextView) findViewById(R.id.damageText);
         switchy= (Button) findViewById(R.id.nintendoSwitch);
         removey= (Button) findViewById(R.id.btnRemoveCard);
@@ -123,6 +125,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 cardArray[5].setDamage(cardArray[5].getDamage()+10);
                 updateText();
+            }
+        });
+        heal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(cardArray[5].getDamage()>0) {
+                    cardArray[5].setDamage(cardArray[5].getDamage() - 10);
+                    updateText();
+                }
             }
         });
     }
@@ -280,7 +291,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void removingMethod(int card){
-            cardArray[card]=null;
+            if(card!=5){
+                cardArray[card]=null;
+            }
         }
 
         public void addingMethod(View v){
@@ -341,6 +354,7 @@ public class MainActivity extends AppCompatActivity {
                     else{
                         cards[5].setText(cardArray[i].getNickName()+"\n"+cardArray[i].getDamage());
                         if(cardArray[i] != null){setAnim(i,cardArray[i].isBurned(),cardArray[i].isConfused(),cardArray[i].isPoisoned(),cardArray[i].isAsleep());}
+                        cards[5].setGravity(Gravity.CENTER_HORIZONTAL);
                     }
                 }
             }
